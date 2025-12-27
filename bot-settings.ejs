@@ -3,388 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bot Ayarları - Guard Bot</title>
+    [span_0](start_span)<title>Bot Ayarları - Guard Bot[span_0](end_span)</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #5865f2;
-            --secondary-color: #2c2f33;
-            --accent-color: #7289da;
-            --success-color: #43b581;
-            --danger-color: #f04747;
-            --warning-color: #faa61a;
-            --dark-bg: #1a1a1a;
-            --card-bg: #2a2a2a;
-            --text-primary: #ffffff;
-            --text-secondary: #b9bbbe;
-            --border-color: #404040;
+            /* Daha canlı ve modern bir renk paleti */
+            --primary-color: #7289da;
+            -[span_1](start_span)-secondary-color: #23272a;[span_1](end_span)
+            --accent-color: #5865f2;
+            --success-color: #2ecc71;
+            --danger-color: #ff4757;
+            --warning-color: #ffa502;
+            --dark-bg: #0c0c0d;
+            -[span_2](start_span)-card-bg: rgba(35, 39, 42, 0.95);[span_2](end_span)
+            -[span_3](start_span)-text-primary: #ffffff;[span_3](end_span)
+            -[span_4](start_span)-text-secondary: #a3a6aa;[span_4](end_span)
+            -[span_5](start_span)-border-color: rgba(255, 255, 255, 0.05);[span_5](end_span)
         }
         body {
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-            color: var(--text-primary);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
+            /* Akıcı bir derinlik için geliştirilmiş gradient */
+            [span_6](start_span)background: radial-gradient(circle at top right, #1e1e2f 0%, #0f0f1a 100%);[span_6](end_span)
+            [span_7](start_span)color: var(--text-primary);[span_7](end_span)
+            [span_8](start_span)font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;[span_8](end_span)
+            [span_9](start_span)min-height: 100vh;[span_9](end_span)
         }
         .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100vh;
-            width: 280px;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(10px);
-            border-right: 1px solid var(--border-color);
-            z-index: 1000;
-            transition: transform 0.3s ease;
+            [span_10](start_span)position: fixed;[span_10](end_span)
+            [span_11](start_span)left: 0;[span_11](end_span)
+            [span_12](start_span)top: 0;[span_12](end_span)
+            [span_13](start_span)height: 100vh;[span_13](end_span)
+            [span_14](start_span)width: 280px;[span_14](end_span)
+            [span_15](start_span)background: rgba(15, 15, 26, 0.8);[span_15](end_span)
+            [span_16](start_span)backdrop-filter: blur(15px);[span_16](end_span)
+            [span_17](start_span)border-right: 1px solid var(--border-color);[span_17](end_span)
+            [span_18](start_span)z-index: 1000;[span_18](end_span)
+            [span_19](start_span)transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);[span_19](end_span)
         }
         .sidebar-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--border-color);
-            text-align: center;
+            [span_20](start_span)padding: 30px 20px;[span_20](end_span)
+            [span_21](start_span)border-bottom: 1px solid var(--border-color);[span_21](end_span)
+            [span_22](start_span)text-align: center;[span_22](end_span)
         }
         .bot-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 3px solid var(--primary-color);
-            margin-bottom: 10px;
+            [span_23](start_span)width: 70px;[span_23](end_span)
+            [span_24](start_span)height: 70px;[span_24](end_span)
+            [span_25](start_span)border-radius: 20px;[span_25](end_span)
+            [span_26](start_span)border: 2px solid var(--primary-color);[span_26](end_span)
+            [span_27](start_span)box-shadow: 0 0 20px rgba(114, 137, 218, 0.3);[span_27](end_span)
+            [span_28](start_span)margin-bottom: 15px;[span_28](end_span)
         }
         .bot-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 5px;
-        }
-        .bot-status {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        .nav-menu {
-            padding: 20px 0;
-        }
-        .nav-item {
-            list-style: none;
+            [span_29](start_span)font-size: 1.1rem;[span_29](end_span)
+            [span_30](start_span)font-weight: 800;[span_30](end_span)
+            letter-spacing: 0.5px;
         }
         .nav-link {
-            display: flex;
-            align-items: center;
-            padding: 15px 25px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
+            [span_31](start_span)display: flex;[span_31](end_span)
+            [span_32](start_span)align-items: center;[span_32](end_span)
+            [span_33](start_span)padding: 14px 25px;[span_33](end_span)
+            [span_34](start_span)color: var(--text-secondary);[span_34](end_span)
+            margin: 4px 15px;
+            border-radius: 12px;
+            [span_35](start_span)transition: 0.3s;[span_35](end_span)
         }
-        .nav-link:hover {
-            background: rgba(88, 101, 242, 0.1);
-            color: var(--text-primary);
-            border-left-color: var(--primary-color);
-        }
-        .nav-link.active {
-            background: rgba(88, 101, 242, 0.2);
-            color: var(--primary-color);
-            border-left-color: var(--primary-color);
-        }
-        .nav-icon {
-            width: 20px;
-            margin-right: 12px;
-            font-size: 1.1rem;
+        .nav-link:hover, .nav-link.active {
+            [span_36](start_span)background: rgba(114, 137, 218, 0.15);[span_36](end_span)
+            [span_37](start_span)color: var(--primary-color);[span_37](end_span)
         }
         .main-content {
-            margin-left: 280px;
-            padding: 20px;
-            min-height: 100vh;
+            [span_38](start_span)margin-left: 280px;[span_38](end_span)
+            [span_39](start_span)padding: 40px;[span_39](end_span)
         }
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(42, 42, 42, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid var(--border-color);
+            [span_40](start_span)background: var(--card-bg);[span_40](end_span)
+            [span_41](start_span)padding: 25px;[span_41](end_span)
+            [span_42](start_span)border-radius: 24px;[span_42](end_span)
+            [span_43](start_span)border: 1px solid var(--border-color);[span_43](end_span)
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         .page-title {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            [span_44](start_span)font-weight: 850;[span_44](end_span)
+            [span_45](start_span)background: linear-gradient(to right, #fff, #7289da);[span_45](end_span)
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        .server-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .bot-settings-card {
+            [span_46](start_span)background: var(--card-bg);[span_46](end_span)
+            [span_47](start_span)border-radius: 30px;[span_47](end_span)
+            [span_48](start_span)padding: 45px;[span_48](end_span)
+            border: 1px solid var(--border-color);
+            margin-top: 30px;
         }
-        .server-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            border: 2px solid var(--primary-color);
+        .status-box {
+            [span_49](start_span)background: rgba(0, 0, 0, 0.2);[span_49](end_span)
+            [span_50](start_span)border-radius: 20px;[span_50](end_span)
+            [span_51](start_span)padding: 20px;[span_51](end_span)
+            [span_52](start_span)border: 1px solid rgba(255, 255, 255, 0.03);[span_52](end_span)
         }
-        .server-details h4 {
-            margin: 0;
-            color: var(--text-primary);
+        .status-value {
+            [span_53](start_span)color: var(--primary-color);[span_53](end_span)
+            [span_54](start_span)font-size: 1.6rem;[span_54](end_span)
         }
-        .server-details p {
-            margin: 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .form-control {
+            [span_55](start_span)background: rgba(0, 0, 0, 0.2) !important;[span_55](end_span)
+            [span_56](start_span)border: 1px solid var(--border-color) !important;[span_56](end_span)
+            border-radius: 12px !important;
+            [span_57](start_span)padding: 12px 18px;[span_57](end_span)
+            [span_58](start_span)color: white !important;[span_58](end_span)
         }
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+        .form-control:focus {
+            [span_59](start_span)border-color: var(--primary-color) !important;[span_59](end_span)
+            [span_60](start_span)box-shadow: 0 0 15px rgba(114, 137, 218, 0.1) !important;[span_60](end_span)
         }
-        .user-actions {
-            display: flex;
-            align-items: center;
-        }
+        .btn-primary { background: var(--primary-color); border: none; font-weight: 600; transition: 0.3s; }
+        .btn-primary:hover { background: var(--accent-color); transform: translateY(-2px); }
         .logout-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: linear-gradient(45deg, var(--danger-color), #d32f2f);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            [span_61](start_span)background: rgba(240, 71, 71, 0.1);[span_61](end_span)
+            [span_62](start_span)color: var(--danger-color);[span_62](end_span)
+            [span_63](start_span)padding: 10px 20px;[span_63](end_span)
+            [span_64](start_span)border-radius: 12px;[span_64](end_span)
+            border: 1px solid rgba(240, 71, 71, 0.2);
+            [span_65](start_span)font-weight: 600;[span_65](end_span)
+            [span_66](start_span)transition: 0.3s;[span_66](end_span)
         }
         .logout-btn:hover {
-            background: linear-gradient(45deg, #d32f2f, var(--danger-color));
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(244, 71, 71, 0.3);
+            [span_67](start_span)background: var(--danger-color);[span_67](end_span)
+            [span_68](start_span)color: white;[span_68](end_span)
+            [span_69](start_span)transform: translateY(-2px);[span_69](end_span)
+        }
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: var(--primary-color);
+            border: none;
             color: white;
-            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 10px;
         }
-        .logout-btn i {
-            font-size: 1rem;
+        @media (max-width: 992px) {
+            .sidebar { transform: translateX(-100%); [span_70](start_span)}
+            .sidebar.open { transform: translateX(0); }[span_70](end_span)
+            .main-content { margin-left: 0; padding: 20px; [span_71](start_span)}
+            .sidebar-toggle { display: block; }
         }
-        /* Bot Ayarları Kartı */
-        .bot-settings-card { background: rgba(35,39,42,0.98); border-radius: 22px; padding: 40px 32px; max-width: 480px; margin: 0 auto; box-shadow: 0 8px 32px #0005, 0 1.5px 0 #5865f2; }
-        .bot-avatar-large { width: 110px; height: 110px; border-radius: 50%; border: 5px solid #5865f2; margin-bottom: 18px; box-shadow: 0 2px 16px #5865f2aa; }
-        .bot-name-large { font-size: 2.2rem; font-weight: 800; letter-spacing: 1px; }
-        .bot-id-large { color: #b9bbbe; font-size: 1rem; margin-bottom: 8px; }
-        .status-row { display: flex; gap: 18px; margin: 28px 0 18px 0; flex-wrap: wrap; }
-        .status-box { background: #26282c; border-radius: 14px; padding: 20px 0; text-align: center; flex: 1 1 120px; min-width: 120px; box-shadow: 0 2px 8px #0002; }
-        .status-label { color: #b9bbbe; font-size: 1.05rem; margin-bottom: 4px; }
-        .status-value { font-size: 1.4rem; font-weight: 700; }
-        .btn-group { gap: 14px; flex-wrap: wrap; }
-        .btn { font-size: 1.1rem; padding: 14px 28px; border-radius: 10px; min-width: 120px; }
-        .form-label { color: #b9bbbe; margin-top: 22px; font-weight: 600; }
-        .input-group { border-radius: 8px; overflow: hidden; }
-        .form-control, .form-control:focus { background: #23272a; color: #fff; border: 1.5px solid #5865f2; font-size: 1.1rem; }
-        .form-control:focus { box-shadow: 0 0 0 2px #5865f2; }
-        .divider { border-bottom: 1.5px solid #333; margin: 36px 0 28px 0; }
-        #bot-action-result { min-height: 24px; font-size: 1.08rem; }
-        @media (max-width: 600px) {
-            .main-content { margin-left: 0; }
-            .bot-settings-card { padding: 18px 4vw; max-width: 98vw; margin: 18px 1vw; }
-            .status-row { flex-direction: column; gap: 10px; }
-            .btn-group { flex-direction: column; gap: 10px; }
-            .btn { min-width: 0; width: 100%; }
-        }
-        .avatar-upload-group { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
-        .avatar-preview { width: 48px; height: 48px; border-radius: 50%; border: 2px solid #5865f2; object-fit: cover; }
     </style>
 </head>
 <body>
-    <!-- Mobile Toggle Button -->
     <button class="sidebar-toggle" onclick="toggleSidebar()">
         <i class="fas fa-bars"></i>
     </button>
-    <!-- Sidebar -->
+
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <img src="<%= botAvatar %>" alt="Bot Avatar" class="bot-avatar">
-            <div class="bot-name"><%= botUsername %></div>
+            <div class="bot-name"><%= botUsername %></div>[span_71](end_span)
             <div class="bot-status">
                 <span id="guardStatus" class="badge <%= guardEnabled ? 'bg-success' : 'bg-danger' %>">
-                    <%= guardEnabled ? 'Aktif' : 'Pasif' %>
+                    <%= guardEnabled ? [span_72](start_span)'Aktif' : 'Pasif' %>[span_72](end_span)
                 </span>
             </div>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="/dashboard/<%= guildID %>" class="nav-link">
-                    <i class="fas fa-tachometer-alt nav-icon"></i>
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/guard/<%= guildID %>" class="nav-link">
-                    <i class="fas fa-shield-halved nav-icon"></i>
-                    Guard Ayarları
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/logs/<%= guildID %>" class="nav-link">
-                    <i class="fas fa-list-alt nav-icon"></i>
-                    Log Kayıtları
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/safe-users/<%= guildID %>" class="nav-link">
-                    <i class="fas fa-user-shield nav-icon"></i>
-                    Güvenli Kullanıcılar
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/roles/<%= guildID %>" class="nav-link">
-                    <i class="fas fa-user-tag nav-icon"></i>
-                    Rol Yönetimi
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/channels/<%= guildID %>" class="nav-link">
-                    <i class="fas fa-hashtag nav-icon"></i>
-                    Kanal Yönetimi
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/bot-settings/<%= guildID %>" class="nav-link active">
-                    <i class="fas fa-robot nav-icon"></i>
-                    Bot Ayarları
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/settings/<%= guildID %>" class="nav-link">
-                    <i class="fas fa-cog nav-icon"></i>
-                    Genel Ayarlar
-                </a>
-            </li>
+            [span_73](start_span)<li class="nav-item"><a href="/dashboard/<%= guildID %>" class="nav-link"><i class="fas fa-tachometer-alt nav-icon"></i> Dashboard</a></li>[span_73](end_span)
+            [span_74](start_span)<li class="nav-item"><a href="/guard/<%= guildID %>" class="nav-link"><i class="fas fa-shield-halved nav-icon"></i> Guard Ayarları</a></li>[span_74](end_span)
+            [span_75](start_span)<li class="nav-item"><a href="/logs/<%= guildID %>" class="nav-link"><i class="fas fa-list-alt nav-icon"></i> Log Kayıtları</a></li>[span_75](end_span)
+            [span_76](start_span)<li class="nav-item"><a href="/safe-users/<%= guildID %>" class="nav-link"><i class="fas fa-user-shield nav-icon"></i> Güvenli Kullanıcılar</a></li>[span_76](end_span)
+            [span_77](start_span)<li class="nav-item"><a href="/roles/<%= guildID %>" class="nav-link"><i class="fas fa-user-tag nav-icon"></i> Rol Yönetimi</a></li>[span_77](end_span)
+            [span_78](start_span)<li class="nav-item"><a href="/channels/<%= guildID %>" class="nav-link"><i class="fas fa-hashtag nav-icon"></i> Kanal Yönetimi</a></li>[span_78](end_span)
+            [span_79](start_span)<li class="nav-item"><a href="/bot-settings/<%= guildID %>" class="nav-link active"><i class="fas fa-robot nav-icon"></i> Bot Ayarları</a></li>[span_79](end_span)
+            [span_80](start_span)<li class="nav-item"><a href="/settings/<%= guildID %>" class="nav-link"><i class="fas fa-cog nav-icon"></i> Genel Ayarlar</a></li>[span_80](end_span)
         </ul>
     </div>
-    <!-- Main Content -->
+
     <div class="main-content">
         <div class="header">
             <div class="header-left">
-                <h1 class="page-title">Bot Ayarları</h1>
+                [span_81](start_span)<h1 class="page-title">Bot Ayarları</h1>[span_81](end_span)
                 <div class="server-info">
-                    <img src="<%= guild && guild.iconURL ? guild.iconURL({ size: 128, extension: 'png' }) : 'https://cdn.discordapp.com/embed/avatars/0.png' %>" alt="Server Icon" class="server-icon" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
+                    [span_82](start_span)<img src="<%= guild && guild.iconURL ? guild.iconURL({ size: 128, extension: 'png' }) : 'https://cdn.discordapp.com/embed/avatars/0.png' %>" alt="Server Icon" class="server-icon" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">[span_82](end_span)
                     <div class="server-details">
-                        <h4><%= guild && guild.name ? guild.name : '' %></h4>
-                        <p><%= guild && guild.memberCount ? guild.memberCount : '' %> üye</p>
+                        [span_83](start_span)<h4><%= guild && guild.name ? guild.name : '' %></h4>[span_83](end_span)
+                        [span_84](start_span)<p><%= guild && guild.memberCount ? guild.memberCount : '' %> üye</p>[span_84](end_span)
                     </div>
                 </div>
             </div>
             <div class="user-actions">
                 <a href="/logout" class="logout-btn">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Çıkış Yap
+                    [span_85](start_span)<i class="fas fa-sign-out-alt"></i> Çıkış Yap[span_85](end_span)
                 </a>
             </div>
         </div>
+
         <div class="bot-settings-card">
-            <div class="text-center mb-2">
-                <img src="<%= botAvatar %>" alt="Bot Avatar" class="bot-avatar-large">
-                <div class="bot-name-large"><%= botUsername %></div>
-                <div class="bot-id-large">ID: <%= botId %></div>
+            <div class="text-center mb-4">
+                [span_86](start_span)<img src="<%= botAvatar %>" alt="Bot Avatar" class="bot-avatar-large">[span_86](end_span)
+                [span_87](start_span)<div class="bot-name-large"><%= botUsername %></div>[span_87](end_span)
+                [span_88](start_span)<div class="bot-id-large opacity-50">ID: <%= botId %></div>[span_88](end_span)
             </div>
-            <div class="status-row">
-                <div class="status-box">
-                    <div class="status-label">Ping</div>
-                    <div class="status-value"><%= ping %> ms</div>
+
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="status-box text-center">
+                        [span_89](start_span)<div class="status-label text-uppercase small fw-bold opacity-50 mb-2">Gecikme</div>[span_89](end_span)
+                        [span_90](start_span)<div class="status-value fw-bold"><%= ping %> ms</div>[span_90](end_span)
+                    </div>
                 </div>
-                <div class="status-box">
-                    <div class="status-label">Uptime</div>
-                    <div class="status-value" id="uptime-value"></div>
+                <div class="col-md-6">
+                    <div class="status-box text-center">
+                        [span_91](start_span)<div class="status-label text-uppercase small fw-bold opacity-50 mb-2">Uptime</div>[span_91](end_span)
+                        [span_92](start_span)<div class="status-value fw-bold" id="uptime-value"></div>[span_92](end_span)
+                    </div>
                 </div>
             </div>
-            <div class="btn-group d-flex justify-content-center mb-3">
-                <button class="btn btn-success" onclick="botControl('start')"><i class="fa fa-play"></i> Başlat</button>
-                <button class="btn btn-warning" onclick="botControl('restart')"><i class="fa fa-rotate"></i> Yeniden Başlat</button>
-                <button class="btn btn-danger" onclick="botControl('stop')"><i class="fa fa-stop"></i> Durdur</button>
+
+            <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
+                [span_93](start_span)<button class="btn btn-success px-4" onclick="botControl('start')"><i class="fa fa-play me-2"></i> Başlat</button>[span_93](end_span)
+                [span_94](start_span)<button class="btn btn-warning px-4 text-white" onclick="botControl('restart')"><i class="fa fa-rotate me-2"></i> Yeniden Başlat</button>[span_94](end_span)
+                [span_95](start_span)<button class="btn btn-danger px-4" onclick="botControl('stop')"><i class="fa fa-stop me-2"></i> Durdur</button>[span_95](end_span)
             </div>
-            <div id="bot-action-result" class="text-center mb-2"></div>
-            <div class="divider"></div>
-            <form id="username-form" class="mb-3">
-                <label class="form-label">Bot İsmini Değiştir</label>
+
+            [span_96](start_span)<div id="bot-action-result" class="text-center mb-4 fw-bold text-primary"></div>[span_96](end_span)
+
+            [span_97](start_span)<div class="divider mb-5" style="height: 1px; background: var(--border-color)"></div>[span_97](end_span)
+
+            <form id="username-form" class="mb-4">
+                [span_98](start_span)<label class="form-label mb-3">Bot İsmi</label>[span_98](end_span)
                 <div class="input-group">
-                    <input type="text" class="form-control" name="username" placeholder="Yeni bot ismi" maxlength="32" required>
-                    <button class="btn btn-primary" type="submit"><i class="fa fa-pen"></i> Güncelle</button>
+                    [span_99](start_span)<input type="text" class="form-control" name="username" placeholder="Yeni bot ismi" maxlength="32" required>[span_99](end_span)
+                    [span_100](start_span)<button class="btn btn-primary px-4" type="submit">Güncelle</button>[span_100](end_span)
                 </div>
             </form>
-            <form id="avatar-form" class="mb-3">
-                <label class="form-label">Bot Avatarını Değiştir (URL)</label>
-                <div class="avatar-upload-group">
-                    <input type="url" class="form-control" name="avatarURL" placeholder="Avatar URL" required style="max-width: 300px;">
-                    <img src="<%= botAvatar %>" id="avatar-preview" class="avatar-preview" alt="Avatar Preview">
-                    <button class="btn btn-primary" type="submit"><i class="fa fa-image"></i> Güncelle</button>
+
+            <form id="avatar-form">
+                [span_101](start_span)<label class="form-label mb-3">Bot Avatarı (URL)</label>[span_101](end_span)
+                <div class="d-flex align-items-center gap-3">
+                    [span_102](start_span)<input type="url" class="form-control" name="avatarURL" placeholder="Avatar URL" required>[span_102](end_span)
+                    [span_103](start_span)<img src="<%= botAvatar %>" id="avatar-preview" class="avatar-preview shadow" style="width: 50px; height: 50px; border-radius: 12px; object-fit: cover;">[span_103](end_span)
+                    [span_104](start_span)<button class="btn btn-primary px-4" type="submit">Güncelle</button>[span_104](end_span)
                 </div>
             </form>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('open');
+            [span_105](start_span)const sidebar = document.getElementById('sidebar');[span_105](end_span)
+            [span_106](start_span)sidebar.classList.toggle('open');[span_106](end_span)
         }
-        // Close sidebar when clicking outside on mobile
+        
         document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
+            [span_107](start_span)const sidebar = document.getElementById('sidebar');[span_107](end_span)
             const sidebarToggle = document.querySelector('.sidebar-toggle');
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 992) {
                 if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
-                    sidebar.classList.remove('open');
+                    [span_108](start_span)sidebar.classList.remove('open');[span_108](end_span)
                 }
             }
         });
-        window.uptime = Number('<%= uptime %>');
+
+        [span_109](start_span)window.uptime = Number('<%= uptime %>');[span_109](end_span)
         function msToTime(duration) {
             let seconds = Math.floor((duration / 1000) % 60),
                 minutes = Math.floor((duration / (1000 * 60)) % 60),
                 hours = Math.floor((duration / (1000 * 60 * 60)) % 24),
-                days = Math.floor(duration / (1000 * 60 * 60 * 24));
-            return `${days > 0 ? days + 'g ' : ''}${hours}sa ${minutes}dk ${seconds}sn`;
+                [span_110](start_span)days = Math.floor(duration / (1000 * 60 * 60 * 24));[span_110](end_span)
+            [span_111](start_span)return `${days > 0 ? days + 'g ' : ''}${hours}sa ${minutes}dk ${seconds}sn`;[span_111](end_span)
         }
-        document.getElementById('uptime-value').innerText = msToTime(window.uptime);
+        [span_112](start_span)document.getElementById('uptime-value').innerText = msToTime(window.uptime);[span_112](end_span)
+
         function botControl(action) {
-            let endpoint = '';
-            if (action === 'restart') endpoint = '/bot-settings/<%= guildID %>/restart';
-            else if (action === 'stop') { alert('Durdurma için process yöneticisi gereklidir!'); return; }
-            else if (action === 'start') { alert('Bot zaten çalışıyor!'); return; }
+            [span_113](start_span)let endpoint = '';[span_113](end_span)
+            [span_114](start_span)if (action === 'restart') endpoint = '/bot-settings/<%= guildID %>/restart';[span_114](end_span)
+            else if (action === 'stop') { alert('Durdurma için process yöneticisi gereklidir!'); return; [span_115](start_span)}
+            else if (action === 'start') { alert('Bot zaten çalışıyor!'); return; }[span_115](end_span)
+            
             fetch(endpoint, { method: 'POST' })
                 .then(r => r.json()).then(d => {
-                    document.getElementById('bot-action-result').innerText = d.message || '';
+                    [span_116](start_span)document.getElementById('bot-action-result').innerText = d.message || '';[span_116](end_span)
                 });
         }
+
         document.getElementById('username-form').onsubmit = function(e) {
-            e.preventDefault();
-            const username = this.username.value;
+            [span_117](start_span)e.preventDefault();[span_117](end_span)
+            [span_118](start_span)const username = this.username.value;[span_118](end_span)
             fetch('/bot-settings/<%= guildID %>/set-username', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username })
             }).then(r => r.json()).then(d => {
-                document.getElementById('bot-action-result').innerText = d.message || '';
-                if (d.success) setTimeout(() => location.reload(), 1000);
+                [span_119](start_span)document.getElementById('bot-action-result').innerText = d.message || '';[span_119](end_span)
+                [span_120](start_span)if (d.success) setTimeout(() => location.reload(), 1000);[span_120](end_span)
             });
         };
+
         document.getElementById('avatar-form').onsubmit = function(e) {
-            e.preventDefault();
-            const avatarURL = this.avatarURL.value;
+            [span_121](start_span)e.preventDefault();[span_121](end_span)
+            [span_122](start_span)const avatarURL = this.avatarURL.value;[span_122](end_span)
             fetch('/bot-settings/<%= guildID %>/set-avatar', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ avatarURL })
             }).then(r => r.json()).then(d => {
-                document.getElementById('bot-action-result').innerText = d.message || '';
-                if (d.success) setTimeout(() => location.reload(), 1000);
+                [span_123](start_span)document.getElementById('bot-action-result').innerText = d.message || '';[span_123](end_span)
+                [span_124](start_span)if (d.success) setTimeout(() => location.reload(), 1000);[span_124](end_span)
             });
         };
+
         document.querySelector('input[name="avatarURL"]').addEventListener('input', function() {
-            document.getElementById('avatar-preview').src = this.value || '<%= botAvatar %>';
+            [span_125](start_span)document.getElementById('avatar-preview').src = this.value || '<%= botAvatar %>';[span_125](end_span)
         });
     </script>
 </body>
 <%- include('layout-blocker.ejs') %>
-</html> 
+</html>
+ 
